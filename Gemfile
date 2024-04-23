@@ -9,8 +9,8 @@ gem "rails", "~> 7.0.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+# Use sqlite3 as the database for Active Record
+gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -71,9 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
-group :development do
-  gem 'rubocop', require: false
-end
+gem 'mysql2'
 
 group :production do
   gem 'pg'
