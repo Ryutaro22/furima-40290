@@ -1,5 +1,4 @@
-##　usersテーブル
-
+## usersテーブル
 | Column                | Type     | Options                   |
 | --------------------- | -------- | ------------------------- |
 | nickname              | string   | null: false               |
@@ -13,14 +12,12 @@
 | birth-date            | datetime | null: false               |
 
 ### Association
-
 - has_many :items
 - has_many :comments
 - has_many :order
 
 
-##　itemsテーブル
-
+## itemsテーブル
 | Column                  | Type      | Options                        |
 | ----------------------- | --------- | ------------------------------ |
 | item-name               | string    | null: false                    |
@@ -40,34 +37,27 @@
 - has_one :order
 
 
-
-##　commentsテーブル
-
-| Column  | Type      | Options                        |
-| ------- | --------- | ------------------------------ |
-| content | text      | null: false                    |
-| user    | reference | null: false, foreign_key: true |
-| image   | reference | null: false, foreign_key: true |
-
-
-### Association
-- belongs_to :user
-- belongs_to :item
-
-
 ## ordersテーブル
-
 | Column       | Type      | Options                        |
 | ------------ | --------- | ------------------------------ |
-| postal-code  | integer   | null: false                    |
-| prefecture   | string    | null: false                    |
-| city         | string    | null: false                    |
-| addresses    | string    | null: false                    |
-| building     | string    | null: false                    |
-| phone-number | string    | null: false                    |
 | user         | reference | null: false, foreign_key: true |
 | item         | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :shipping
+
+
+## shipping-addressテーブル
+| Column       | Type      | Options                        |
+| ------------ | --------- | ------------------------------ |
+| postal-code  | integer   | null: false                    |
+| prefecture   | string    | null: false                    |
+| city         | string    | null: false                    |
+| addresses    | string    | null: false                    |
+| building     | string    |                                |
+| phone-number | string    | null: false                    |
+
+### Association
+- belongs_to :order
