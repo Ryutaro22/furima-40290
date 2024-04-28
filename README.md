@@ -1,24 +1,73 @@
-# README
+##　usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column                | Type     | Options                   |
+| --------------------- | -------- | ------------------------- |
+| nickname              | string   | null: false               |
+| email                 | string   | null: false, unique: true |
+| password              | string   | null: false               |
+| password-confirmation | string   | null: false               |
+| last-name             | string   | null: false               |
+| first-name            | string   | null: false               |
+| last-name-kana        | string   | null: false               |
+| first-name-kana       | string   | null: false               |
+| birth-date            | datetime | null: false               |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :comments
+- has_many :order
 
-* System dependencies
 
-* Configuration
+##　itemsテーブル
 
-* Database creation
+| Column                  | Type      | Options                        |
+| ----------------------- | --------- | ------------------------------ |
+| item-name               | string    | null: false                    |
+| item-info               | text      | null: false                    |
+| item-category           | string    | null: false                    |
+| item-sales-status       | string    | null: false                    |
+| item-prefecture         | string    | null: false                    |
+| item-scheduled-delivery | string    | null: false                    |
+| item-price              | integer   | null: false                    |
+| add-tax-price           | integer   | null: false                    |
+| profit                  | integer   | null: false                    |
+| user                    | reference | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- has_many :comments
+- belongs_to :user
+- has_one :order
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+##　commentsテーブル
 
-* ...
+| Column  | Type      | Options                        |
+| ------- | --------- | ------------------------------ |
+| content | text      | null: false                    |
+| user    | reference | null: false, foreign_key: true |
+| image   | reference | null: false, foreign_key: true |
+
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## ordersテーブル
+
+| Column       | Type      | Options                        |
+| ------------ | --------- | ------------------------------ |
+| postal-code  | integer   | null: false                    |
+| prefecture   | string    | null: false                    |
+| city         | string    | null: false                    |
+| addresses    | string    | null: false                    |
+| building     | string    | null: false                    |
+| phone-number | string    | null: false                    |
+| user         | reference | null: false, foreign_key: true |
+| item         | reference | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
