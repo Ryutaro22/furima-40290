@@ -76,3 +76,5 @@ gem 'mysql2'
 group :production do
   gem 'pg'
 end
+
+gem 'active_hash'
