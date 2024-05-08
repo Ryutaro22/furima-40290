@@ -43,10 +43,10 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :address
 
 
-## shipping_addressesテーブル
+## addressesテーブル
 | Column        | Type       | Options                        |
 | ------------- | ---------^ | ------------------------------ |
 | postal_code   | string     | null: false                    |
