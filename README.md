@@ -20,13 +20,13 @@
 | ----------------------- | ---------- | ------------------------------ |
 | item_name               | string     | null: false                    |
 | item_info               | text       | null: false                    |
-| item_category           | string     | null: false                    |
-| item_sales_status       | string     | null: false                    |
+| category_id             | integer    | null: false                    |
+| item_condition_id       | integer    | null: false                    |
 | prefecture_id           | integer    | null: false                    |
-| item_scheduled_delivery | string     | null: false                    |
+| shipping_period_id      | integer    | null: false                    |
+| postage_payer_id        | integer    | null: false                    |
 | item_price              | integer    | null: false                    |
-| add_tax_price           | integer    | null: false                    |
-| profit                  | integer    | null: false                    |
+
 | user                    | references | null: false, foreign_key: true |
 
 ### Association
@@ -48,7 +48,7 @@
 
 ## addressesテーブル
 | Column        | Type       | Options                        |
-| ------------- | ---------^ | ------------------------------ |
+| ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
