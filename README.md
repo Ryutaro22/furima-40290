@@ -26,7 +26,6 @@
 | shipping_period_id      | integer    | null: false                    |
 | postage_payer_id        | integer    | null: false                    |
 | item_price              | integer    | null: false                    |
-
 | user                    | references | null: false, foreign_key: true |
 
 ### Association
