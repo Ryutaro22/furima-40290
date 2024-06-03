@@ -31,31 +31,37 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
-      it 'カテゴリーが選択されていなければ出品できない' do
-        @item.category = nil
+      it 'カテゴリーに「---」が選択されていると出品できない' do
+        @item.category = ' 1 '
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
-      it '状態が選択されていなければ出品できない' do
-        @item.item_condition = nil
+      it 'コンディションに「---」が選択されていると出品できない' do
+        @item.item_condition = ' 1 '
         @item.valid?
         expect(@item.errors.full_messages).to include("Item Condition can't be blank")
       end
 
-      it '配送料が選択されていなければ出品できない' do
-        @item.postage_payer = nil
+      it '配送料の負担に「---」が選択されていると出品できない' do
+        @item.postage_payer = ' 1 '
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage payer can't be blank")
       end
 
-      it '発送日が選択されていなければ出品できない' do
-        @item.shipping_period = nil
+      it '発送までの日数に「---」が選択されていると出品できない' do
+        @item.shipping_period = ' 1 '
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping period can't be blank")
       end
 
-      it '価格が選択されていなければ出品できない' do
+      it '発送元の地域に「---」が選択されていると出品できない' do
+        @item.Prefecture = ' 1 '
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
+      it '価格が空では出品できない' do
         @item.item_price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item Price can't be blank")
