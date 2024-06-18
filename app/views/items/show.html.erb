@@ -33,7 +33,7 @@
       <% end %>
     <% else current_user.id != @item.user_id %>
       <% if @item.order == nil %>
-        <%= link_to "購入画面に進む", orders_path(item_id: @item.id) ,class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", orders_path(item_id: @item.id), data: {turbo: false} ,class:"item-red-btn"%>
       <% end %>
     <% end %>
   <% end %>

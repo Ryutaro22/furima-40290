@@ -15,7 +15,7 @@ class OrderAddress
 
   def save
     item = Item.find(item_id)
-    @order = Order.create(user_id: user_id, item_id: item_id, price: item.item_price, token: token)
+    @order = Order.create(user_id: user_id, item_id: item_id)
     if @order.valid?
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, order_id: @order.id)
     else
