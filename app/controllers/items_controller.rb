@@ -16,23 +16,21 @@ class ItemsController < ApplicationController
 
   def edit
     @user = @item.user
-  unless user_signed_in? && current_user.id == @item.user_id
+    if current_user.id != @item.user_id || @item.order.present?
     redirect_to root_path
-  end
+    end
   end
 
   def destroy
     if user_signed_in? && current_user.id == @item.user_id
       @item.destroy
       redirect_to root_path
-    else
-      redirect_to root_path
     end
   end
 
   def update
     if @item.update(item_params)
-      redirect_to user_item_path(@item)
+      redirect_to item_path(@item)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +41,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @items = @user.items.includes(:user)
+      @items = current_user.items.includes(:user)
       render :new, status: :unprocessable_entity
     end
   end

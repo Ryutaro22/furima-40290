@@ -1,13 +1,15 @@
 <%# cssは商品出品のものを併用しています。
 app/assets/stylesheets/items/new.css %>
+<% if current_user.id == @item.user_id %>
 
 <div class="items-sell-contents">
   <header class="items-sell-header">
+
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, url: user_item_path(@item.user, @item), data: { turbo: false }, local: true do |f| %>
+    <%= form_with model: @item, url: item_path(@item), data: { turbo: false }, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: @item %>
 
@@ -139,11 +141,12 @@ app/assets/stylesheets/items/new.css %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', user_item_path(@item.user, @item), class:"back-btn" %>
+      <%=link_to 'もどる', item_path(@item), class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
-  </div>
-  <% end %>
+    </div>
+    <% end %>
+
 
   <footer class="items-sell-footer">
     <ul class="menu">
@@ -156,4 +159,5 @@ app/assets/stylesheets/items/new.css %>
       ©︎Furima,Inc.
     </p>
   </footer>
-</div>
+  </div>
+<% end %>
